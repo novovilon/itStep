@@ -1,0 +1,31 @@
+package beetlebeatz;
+
+public class Ves
+{
+    public static void main(String[] args)
+    {
+        Idl i = new Idl ();
+        i.idl (160, 50);
+    }
+}
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+package beetlebeatz;
+
+public class Idl
+{
+    public void idl(double height, double weight)
+    {
+        double d = height - 110;
+        if (d == weight)
+        {
+            System.out.println ("у вас вес идеальный ;)");
+        }
+            if (weight < d)
+            {
+                System.out.println ("вам стоит набрать " + (d - weight) + ("кг") );
+            }
+            if (weight > d){
+                System.out.println ("вам похудеть на " + (weight - d) + ("кг") );
+            }
+    }
+}
