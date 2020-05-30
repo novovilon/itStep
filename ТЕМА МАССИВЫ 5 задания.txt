@@ -1,0 +1,143 @@
+Задание 5
+Есть некоторый текст. Реализуйте следующую функциональность
+■ Изменить текст таким образом, чтобы каждое предложение начиналось с большой буквы;
+■ Посчитайте сколько раз цифры встречаются в тексте;
+■ Посчитайте сколько раз знаки препинания встречаются в тексте;
+■ Посчитайте количество предложений в тексте.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package novovilon;
+
+
+public class TestXex
+{
+
+    public static void main(String[] args)
+    {
+        String str;
+        str = "авторы дают азы программирования для Android — особенности и нюансы системы и процесса разработки " +
+                "приложений — с учётом 0-вого уровня читателя.пособие нужно читать главу за главой," +
+                " чтобы перейти от 0 до 80 уровня. ";
+
+        Offers offers = new Offers ();
+        offers.Offers (str);
+
+        PunctuationMark pm = new PunctuationMark ();
+        pm.Mark (str);
+
+        Numbers numbers = new Numbers ();
+        numbers.Num (str);
+
+        Text text = new Text ();
+        text.Text (str);
+        
+
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package novovilon;
+
+public class Offers
+{
+
+    public void Offers(String text1)
+    {
+
+        int count1 = 0;
+
+        for(int i = 0; i < text1.length() - 1; i++)
+        {
+            if ((text1.charAt(i + 1) == '.' || text1.charAt(i + 1) == '!' ||
+                    text1.charAt(i + 1) == '?') &&
+                    !(text1.charAt(i) == '.' || text1.charAt(i) == '!' ||
+                            text1.charAt(i) == '?')) count1++;
+        }
+        System.out.println(count1 + " предложения в тексте");
+
+    }
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package novovilon;
+
+public class PunctuationMark 
+{
+    public void Mark(String text2)
+    {
+        char[] c1 = {'.',',','?','!'};
+        int count2 = 0;
+
+        for(int i=0;i<text2.length();i++)
+        {
+            for(int j=0;j<c1.length;j++)
+            {
+                if(text2.charAt(i) == c1 [j])
+                {
+                    count2++;
+                    break;
+                }
+            }
+
+        }
+        System.out.println (count2 + " знаков препинания в тексте ");
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package novovilon;
+
+public class Numbers
+{
+    public void Num(String text3)
+    {
+        char[] c2 = {'0','1','2','3','4','5','6','7','8','9'};
+        int count3 = 0;
+
+        for(int i=0;i<text3.length();i++)
+        {
+            for(int j=0;j<c2.length;j++)
+            {
+                if(text3.charAt(i) == c2 [j])
+                {
+                    count3++;
+                    break;
+                }
+            }
+
+        }
+        System.out.println (count3 + " чисел в тексте ");
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package novovilon;
+
+public class Text {
+    String s2;
+
+    public void Text(String s1)
+    {
+        s2 = s2 + s1.substring(0, 1).toUpperCase();
+
+        for (int i = 1; i < s1.length(); i++)
+        {
+            if (".".equals(s1.substring(i - 1 , i)))
+            {
+                s2 = s2 + s1.substring(i, i + 1 ).toUpperCase();
+            }
+            else
+                {
+                    s2 = s2 + s1.substring(i, i + 1 );
+                }
+        }
+        System.out.println (s2);
+    }
+
+}
+
